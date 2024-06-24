@@ -16,49 +16,27 @@ public class SlytherinStudent extends HogwartsStudent {
         this.lustForPower = lustForPower;
     }
 
-    public byte getCunning () {
-        return cunning;
-    }
-
-    public byte getDetermination () {
-        return determination;
-    }
-
-    public byte getAmbition () {
-        return ambition;
-    }
-
-    public byte getResourcefulness () {
-        return resourcefulness;
-    }
-
-    public byte getLustForPower () {
-        return lustForPower;
-    }
-
 //Метод для выведения информации по конкретному студенту Слизерина
-    public static void slytherinStudentPrint (SlytherinStudent student) {
-        hogwartsStudentPrint(student);
-        System.out.println("Хитрость: " + student.getCunning() +
-                ";\nРешительность: " + student.getDetermination() +
-                ";\nАмбициозность: " + student.getAmbition() +
-                ";\nНаходчивость: " + student.getResourcefulness() +
-                ";\nЖажда власти: " + student.getLustForPower());
+    @Override
+    public void allStatsPrint() {
+        super.allStatsPrint();
+        System.out.println("Хитрость: " + cunning + ";\nРешительность: " + determination + ";\nАмбициозность: " +
+                ambition + ";\nНаходчивость: " + resourcefulness + ";\nЖажда власти: " + lustForPower + ";");
     }
 
 //Суммирование качеств студента Слизерина
-    public static int characteristicsSum (SlytherinStudent student) {
-        return student.cunning + student.determination + student.ambition + student.resourcefulness + student.lustForPower;
+    public int slytherinCharacteristicsSum () {
+        return cunning + determination + ambition + resourcefulness + lustForPower;
     }
 
 //Сравнение двух студентов Слизерина
-    public static void compareSlytherinStudents (SlytherinStudent student1, SlytherinStudent student2) {
-        if (characteristicsSum(student1) > characteristicsSum(student2)) {
-            System.out.println(student1.getFullName() + " лучше подходит для Слизерина, чем " + student2.getFullName());
-        } else if (characteristicsSum(student1) < characteristicsSum(student2)) {
-            System.out.println(student2.getFullName() + " лучше подходит для Слизерина, чем " + student1.getFullName());
+    public void compareSlytherinStudents (SlytherinStudent student) {
+        if (this.slytherinCharacteristicsSum() > student.slytherinCharacteristicsSum()) {
+            System.out.println(this.getFullName() + " лучше подходит для Слизерина, чем " + student.getFullName());
+        } else if (student.slytherinCharacteristicsSum() > this.slytherinCharacteristicsSum()) {
+            System.out.println(student.getFullName() + " лучше подходит для Слизерина, чем " + this.getFullName());
         } else {
-            System.out.println("Студенты " + student1.getFullName() + " и " + student2.getFullName() + " одинаково подходят для Слизерина");
+            System.out.println("Студенты " + this.getFullName() + " и " + student.getFullName() + " одинаково подходят для Слизерина");
         }
     }
 }

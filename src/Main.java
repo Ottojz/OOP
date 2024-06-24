@@ -25,20 +25,21 @@ public class Main {
 
 
 //Применение методов, которые выводят описание конкретного студента
-        GryffindorStudent.gryffindorStudentPrint (ronWeasley);
-        HufflepuffStudent.hufflepuffStudentPrint(zachariasSmith);
-        RavenclawStudent.ravenclawStudentPrint(marcusBelby);
-        SlytherinStudent.slytherinStudentPrint(dracoMalfoy);
+        ronWeasley.allStatsPrint();
+        zachariasSmith.allStatsPrint();
+        marcusBelby.allStatsPrint();
+        dracoMalfoy.allStatsPrint();
 
         System.out.println();
 
-        GryffindorStudent.compareGryffindorStudents(ronWeasley, hermioneGranger);
-        HufflepuffStudent.compareHufflepuffStudents(cedricDiggory, justinFinchFletchley);
-        RavenclawStudent.compareRavenclawStudents(choChang, padmaPatil);
-        SlytherinStudent.compareSlytherinStudents(gregoryGoyle, grahamMontague);
+//Применение методов сравнения двух студентов одного факультета
+        ronWeasley.compareGryffindorStudents(hermioneGranger);
+        cedricDiggory.compareHufflepuffStudents(justinFinchFletchley);
+        choChang.compareRavenclawStudents(padmaPatil);
+        gregoryGoyle.compareSlytherinStudents(grahamMontague);
 
         System.out.println();
 
-        HogwartsStudent.compareHogwartsStudents(harryPotter, dracoMalfoy);
+        harryPotter.compareHogwartsStudents(dracoMalfoy);
     }
 }

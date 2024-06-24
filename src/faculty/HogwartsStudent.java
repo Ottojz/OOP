@@ -1,10 +1,10 @@
 package faculty;
 
 public abstract class HogwartsStudent {
-    protected   String name;
-    protected   String surname;
-    protected byte spellPower;
-    protected byte transgessionDistance;
+    private String name;
+    private String surname;
+    private byte spellPower;
+    private byte transgessionDistance;
 
     public HogwartsStudent (String name, String surname, byte spellPower, byte transgessionDistance) {
         this.name = name;
@@ -13,37 +13,31 @@ public abstract class HogwartsStudent {
         this.transgessionDistance = transgessionDistance;
     }
 
-    public byte getSpellPower () {
-        return spellPower;
-    }
-
-    public byte getTransgessionDistance () {
-        return transgessionDistance;
-    }
-
-    public String getFullName () {
+    public String getFullName() {
         return name + " " + surname;
     }
 
-    public static void hogwartsStudentPrint(HogwartsStudent student) {
-        System.out.println("\nИмя: " + student.getFullName() +
-                ";\nСила колдовства: " + student.getSpellPower() +
-                ";\nДальность трансгрессии: " + student.getTransgessionDistance() + ";");
+//Метода выведения общей информации по любому студенту Хогвартса
+    public void allStatsPrint () {
+        System.out.println("\nИмя: " + getFullName() + ";\nСила колдовства: " + spellPower +
+                ";\nДальность трансгрессии: " + transgessionDistance + ";");
     }
+//Понимаю, что можно было реализовать как геттер, привести все к одной строке и в других классах вызывать через this.
+//но с таким решением (переопределение метода) не пришлось придумывать новое название методу
 
 //Суммирование силы колдовстваи дальности трансгрессии:
-    public static int characteristicsSum (HogwartsStudent student) {
-        return student.spellPower + student.transgessionDistance;
+    public int hogwartsCharacteristicsSum () {
+        return spellPower + transgessionDistance;
     }
 
 //Сравнение мощности магии студентов Хогвартса
-    public static void compareHogwartsStudents (HogwartsStudent student1, HogwartsStudent student2) {
-        if (characteristicsSum(student1) > characteristicsSum(student2)) {
-            System.out.println(student1.getFullName() + " обладает бОльшей мощностью магии, чем " + student2.getFullName());
-        } else if (characteristicsSum(student1) < characteristicsSum(student2)) {
-            System.out.println(student2.getFullName() + " обладает бОльшей мощностью магии, чем " + student1.getFullName());
+    public void compareHogwartsStudents (HogwartsStudent student) {
+        if (this.hogwartsCharacteristicsSum() > student.hogwartsCharacteristicsSum()) {
+            System.out.println(this.getFullName() + " обладает бОльшей мощностью магии, чем " + student.getFullName());
+        } else if (student.hogwartsCharacteristicsSum() > this.hogwartsCharacteristicsSum()) {
+            System.out.println(student.getFullName() + " обладает бОльшей мощностью магии, чем " + this.getFullName());
         } else {
-            System.out.println("Студенты " + student1.getFullName() + " и " + student2.getFullName() + " обладают одинаковой мощьностью магии");
+            System.out.println("Студенты " + this.getFullName() + " и " + student.getFullName() + " обладают одинаковой мощьностью магии");
         }
     }
 }

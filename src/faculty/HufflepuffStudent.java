@@ -12,39 +12,26 @@ public class HufflepuffStudent extends HogwartsStudent {
         this.honesty = honesty;
     }
 
-    public byte getHardworkness () {
-        return hardworkness;
-    }
-
-    public byte getLoyalty () {
-        return loyalty;
-    }
-
-    public byte getHonesty () {
-        return honesty;
-    }
-
 //Метод для выведения информации по конкретному студенту Пуффендуя
-    public static void hufflepuffStudentPrint (HufflepuffStudent student) {
-        hogwartsStudentPrint(student);
-        System.out.println("Трудолюбие: " + student.getHardworkness() +
-                ";\nВерность: " + student.getLoyalty() +
-                ";\nЧестность: " + student.getHonesty());
+    @Override
+    public void allStatsPrint () {
+        super.allStatsPrint();
+        System.out.println ("Трудолюбие: " + hardworkness + ";\nВерность: " + loyalty + ";\nЧестность: " + honesty + ";");
     }
 
 //Суммирование качеств студента Пуффендуя
-    public static int characteristicsSum (HufflepuffStudent student) {
-        return student.hardworkness + student.loyalty + student.honesty;
+    public int hufflepuffCharacteristicsSum () {
+        return hardworkness + loyalty + honesty;
     }
 
 //Сравнение двух студентов Пуффендуя
-    public static void compareHufflepuffStudents (HufflepuffStudent student1, HufflepuffStudent student2) {
-        if (characteristicsSum(student1) > characteristicsSum(student2)) {
-            System.out.println(student1.getFullName() + " лучше подходит для Пуффендуя, чем " + student2.getFullName());
-        } else if (characteristicsSum(student1) < characteristicsSum(student2)) {
-            System.out.println(student2.getFullName() + " лучше подходит для Пуффендуя, чем " + student1.getFullName());
+    public void compareHufflepuffStudents (HufflepuffStudent student) {
+        if (this.hufflepuffCharacteristicsSum() > student.hufflepuffCharacteristicsSum()) {
+            System.out.println(this.getFullName() + " лучше подходит для Пуффендуя, чем " + student.getFullName());
+        } else if (student.hufflepuffCharacteristicsSum() > this.hufflepuffCharacteristicsSum()) {
+            System.out.println(student.getFullName() + " лучше подходит для Пуффендуя, чем " + this.getFullName());
         } else {
-            System.out.println("Студенты " + student1.getFullName() + " и " + student2.getFullName() + " одинаково подходят для Пуффендуя");
+            System.out.println("Студенты " + this.getFullName() + " и " + student.getFullName() + " одинаково подходят для Пуффендуя");
         }
     }
 }
